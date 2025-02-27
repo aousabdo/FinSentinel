@@ -1,0 +1,49 @@
+graph TB
+    subgraph Input
+        A1[Text Data] --> A2[Cleaned Text]
+    end
+    
+    subgraph LLM Processing
+        A2 --> B1[Prompt Template]
+        B1 --> B2{LLM Provider}
+        B2 -->|OpenAI| C1[GPT-4o]
+        B2 -->|Anthropic| C2[Claude]
+        B2 -->|Local| C3[Ollama]
+        C1 --> D[LLM Response]
+        C2 --> D
+        C3 --> D
+    end
+    
+    subgraph Response Processing
+        D --> E1[JSON Parsing]
+        E1 --> E2[Sentiment Score]
+        E1 --> E3[Confidence Score]
+        E1 --> E4[Sentiment Drivers]
+        E1 --> E5[Entity Detection]
+    end
+    
+    subgraph Aggregation
+        E2 --> F1[Average Sentiment]
+        E3 --> F2[Weighted Sentiment]
+        E4 --> F3[Key Driver Analysis]
+        E5 --> F4[Entity-Specific Sentiment]
+    end
+    
+    subgraph Signal Generation
+        F1 --> G1[Sentiment Trend Analysis]
+        F2 --> G1
+        F3 --> G2[Entity Sentiment Signals]
+        F4 --> G2
+        G1 --> G3[Trading Signal]
+        G2 --> G3
+    end
+    
+    classDef input fill:#f9d,stroke:#333,stroke-width:1px
+    classDef llm fill:#bbf,stroke:#333,stroke-width:1px
+    classDef process fill:#dfd,stroke:#333,stroke-width:1px
+    classDef output fill:#fdd,stroke:#333,stroke-width:1px
+    
+    class A1,A2 input
+    class B1,B2,C1,C2,C3,D llm
+    class E1,E2,E3,E4,E5,F1,F2,F3,F4 process
+    class G1,G2,G3 output 

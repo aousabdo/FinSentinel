@@ -1,0 +1,45 @@
+graph TB
+    subgraph Input Data
+        A1[Market Data] --> A3[Data Merger]
+        A2[Sentiment Data] --> A3
+        A3 --> A4[Time-Aligned Dataset]
+    end
+    
+    subgraph Strategy Definition
+        B1[Strategy Parameters] --> B2[Signal Generator]
+        B2 --> B3[Trade Logic]
+        A4 --> B2
+    end
+    
+    subgraph Simulation
+        B3 --> C1[Portfolio Manager]
+        C1 --> C2[Position Tracker]
+        C2 --> C3[Performance Calculator]
+    end
+    
+    subgraph Analysis
+        C3 --> D1[Equity Curve]
+        C3 --> D2[Performance Metrics]
+        D2 --> D3[Risk Metrics]
+        D1 --> D4[Visualization]
+        D3 --> D4
+    end
+    
+    subgraph Optimization
+        D4 --> E1[Parameter Tuning]
+        D2 --> E1
+        E1 --> E2[Strategy Refinement]
+        E2 --> B1
+    end
+    
+    classDef input fill:#f9d,stroke:#333,stroke-width:1px
+    classDef strategy fill:#bbf,stroke:#333,stroke-width:1px
+    classDef simulation fill:#dfd,stroke:#333,stroke-width:1px
+    classDef analysis fill:#fdd,stroke:#333,stroke-width:1px
+    classDef optimization fill:#ddf,stroke:#333,stroke-width:1px
+    
+    class A1,A2,A3,A4 input
+    class B1,B2,B3 strategy
+    class C1,C2,C3 simulation
+    class D1,D2,D3,D4 analysis
+    class E1,E2 optimization 

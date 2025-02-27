@@ -1,0 +1,40 @@
+sequenceDiagram
+    participant User
+    participant Data as Data Collection
+    participant Sentiment as Sentiment Analysis
+    participant Strategy as Trading Strategy
+    participant Viz as Visualization
+    
+    User->>Data: Configure data sources
+    Data->>Data: Connect to APIs
+    Data->>User: Confirm data access
+    
+    User->>Data: Fetch market data
+    Data->>User: Return price data
+    
+    User->>Data: Fetch text data
+    Data->>User: Return social/news data
+    
+    User->>Sentiment: Configure LLM settings
+    Sentiment->>Sentiment: Initialize analyzer
+    
+    User->>Sentiment: Process text data
+    Sentiment->>Sentiment: Run LLM analysis
+    Sentiment->>User: Return sentiment scores
+    
+    User->>Strategy: Define strategy parameters
+    Strategy->>Strategy: Initialize backtester
+    
+    User->>Strategy: Run backtest
+    Strategy->>Strategy: Calculate performance
+    Strategy->>User: Return results & statistics
+    
+    User->>Viz: Create visualization
+    Viz->>Viz: Generate dashboard
+    Viz->>User: Display interactive charts
+    
+    User->>Strategy: Refine strategy
+    Strategy->>User: Updated performance metrics
+    
+    User->>Viz: Export results
+    Viz->>User: Save reports & charts 

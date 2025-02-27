@@ -1,0 +1,55 @@
+graph TB
+    subgraph External Data Sources
+        EX1[Market Data APIs] --> EX3[API Gateway]
+        EX2[Text Data APIs] --> EX3
+        EX4[LLM Providers] --> EX3
+    end
+    
+    subgraph Core Modules
+        subgraph Data
+            D1[market_data.py] --> D3[Data Storage]
+            D2[text_data.py] --> D3
+        end
+        
+        subgraph Sentiment
+            S1[llm_analyzer.py] --> S2[Sentiment DB]
+        end
+        
+        subgraph Strategy
+            ST1[backtester.py] --> ST2[Strategy Results]
+        end
+        
+        subgraph Visualization
+            V1[dashboard.py] --> V2[Interactive UI]
+        end
+    end
+    
+    subgraph Application Layer
+        A1[Examples] --> A3[User Interface]
+        A2[Notebooks] --> A3
+    end
+    
+    EX3 --> D1
+    EX3 --> D2
+    EX3 --> S1
+    D3 --> S1
+    D3 --> ST1
+    S2 --> ST1
+    ST2 --> V1
+    S2 --> V1
+    D3 --> V1
+    V2 --> A3
+    
+    classDef external fill:#f9d,stroke:#333,stroke-width:1px
+    classDef data fill:#bbf,stroke:#333,stroke-width:1px
+    classDef sentiment fill:#dfd,stroke:#333,stroke-width:1px
+    classDef strategy fill:#fdd,stroke:#333,stroke-width:1px
+    classDef viz fill:#ddf,stroke:#333,stroke-width:1px
+    classDef app fill:#ffd,stroke:#333,stroke-width:1px
+    
+    class EX1,EX2,EX3,EX4 external
+    class D1,D2,D3 data
+    class S1,S2 sentiment
+    class ST1,ST2 strategy
+    class V1,V2 viz
+    class A1,A2,A3 app 
