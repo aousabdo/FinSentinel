@@ -215,3 +215,66 @@ The system consists of the following components:
 ![User Workflow](docs/images/user_workflow.png)
 
 For more detailed explanations of these diagrams and workflows, see [Workflow Guide](docs/workflow_guide.md).
+
+## Project Directory Structure
+
+The FinSentinel project follows a modular architecture that reflects the system components shown in the diagrams:
+
+```
+finsentinel/
+├── docs/                       # Documentation
+│   ├── images/                 # Workflow and architecture diagrams
+│   │   ├── *.mmd              # Mermaid source files for diagrams
+│   │   └── *.png              # Generated diagram images
+│   └── workflow_guide.md       # Detailed workflow documentation
+│
+├── finsentinel/                # Main package code
+│   ├── __init__.py            # Package initialization
+│   ├── data/                   # Data collection modules
+│   │   ├── __init__.py
+│   │   ├── market_data.py     # Market data collection (prices, etc.)
+│   │   └── text_data.py       # Text data collection (social media, news)
+│   │
+│   ├── sentiment/              # Sentiment analysis modules
+│   │   ├── __init__.py
+│   │   ├── llm_analyzer.py    # LLM-based sentiment analysis
+│   │   ├── prompts.py         # LLM prompt templates
+│   │   └── aggregator.py      # Sentiment score aggregation
+│   │
+│   ├── strategy/               # Trading strategy modules
+│   │   ├── __init__.py
+│   │   ├── signals.py         # Trading signal generation
+│   │   ├── backtester.py      # Strategy backtesting framework
+│   │   └── optimization.py    # Strategy parameter optimization
+│   │
+│   ├── visualization/          # Visualization components
+│   │   ├── __init__.py
+│   │   ├── dashboard.py       # Interactive dashboard
+│   │   └── plots.py           # Various plot types
+│   │
+│   └── utils/                  # Utility functions
+│       ├── __init__.py
+│       ├── config.py          # Configuration management
+│       └── storage.py         # Data storage utilities
+│
+├── examples/                   # Example scripts and notebooks
+│   ├── data_collection.ipynb   # Data collection examples
+│   ├── sentiment_analysis.ipynb # Sentiment analysis examples
+│   ├── strategy_testing.ipynb  # Strategy testing examples
+│   └── full_pipeline.ipynb     # Complete workflow examples
+│
+├── tests/                      # Unit and integration tests
+│   ├── __init__.py
+│   ├── test_data.py
+│   ├── test_sentiment.py
+│   ├── test_strategy.py
+│   └── test_visualization.py
+│
+├── setup.py                    # Package setup script
+├── requirements.txt            # Project dependencies
+└── README.md                   # Project overview
+```
+
+This structure organizes the code into functional modules that correspond to the main components in the system architecture diagram.
+
+## Installation and Setup
