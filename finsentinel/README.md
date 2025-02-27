@@ -179,3 +179,39 @@ This project combines the power of Large Language Models (LLMs) with financial m
 - [requests](https://requests.readthedocs.io/) - HTTP requests
 - [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/) - Web scraping
 - [fastapi](https://fastapi.tiangolo.com/) - API development
+
+## System Workflow Diagrams
+
+To help understand the FinSentinel architecture and workflows, we've created a set of visual diagrams. These diagrams illustrate the key components and processes of the system.
+
+### Overall Workflow
+![Overall Workflow](docs/images/overall_workflow.png)
+
+The FinSentinel workflow consists of five main stages:
+1. **Data Collection** - Gathering market and text data from various sources
+2. **Data Processing** - Cleaning and preprocessing the collected data
+3. **Sentiment Analysis** - Using LLMs to analyze sentiment in financial texts
+4. **Trading Strategy** - Generating trading signals based on sentiment and market data
+5. **Analysis & Visualization** - Backtesting strategies and visualizing the results
+
+### System Architecture
+![System Architecture](docs/images/system_architecture.png)
+
+The system consists of the following components:
+- **External Data Sources** - APIs for market data, text data, and LLM providers
+- **Core Modules** - Data, Sentiment, Strategy, and Visualization components
+- **Application Layer** - Examples, notebooks, and user interfaces
+
+### Data Pipeline
+![Data Pipeline](docs/images/data_pipeline.png)
+
+### Sentiment Analysis Process
+![Sentiment Analysis](docs/images/sentiment_analysis.png)
+
+### Backtesting Workflow
+![Backtest Workflow](docs/images/backtest_workflow.png)
+
+### User Workflow
+![User Workflow](docs/images/user_workflow.png)
+
+For more detailed explanations of these diagrams and workflows, see [Workflow Guide](docs/workflow_guide.md).
